@@ -12,7 +12,7 @@ const colors = {
   },
   red: "#E25858",
   blue: {
-    100: "#4AE8DE",
+    100: "#4EA8DE",
     200: "#1E6F9F",
   },
   purple: {
