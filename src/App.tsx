@@ -1,8 +1,15 @@
+import { ThemeProvider } from "styled-components";
+import { themeBlack } from "./styles/theme";
+import { GlobalStyle } from "./styles/global";
+
 function App() {
   return (
-    <div>
-      <h1>To Do</h1>
-    </div>
+    <ThemeProvider theme={themeBlack}>
+      <div>
+        <h1>To Do</h1>
+      </div>
+      <GlobalStyle />
+    </ThemeProvider>
   );
 }
 
