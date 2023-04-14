@@ -20,14 +20,15 @@ const WrapperModifier = {
   secondary: (theme: DefaultTheme) =>
     css`
       background-color: transparent;
+
       svg {
         color: ${theme.colors.gray[300]};
       }
 
       &:hover {
-        background-color: ${theme.colors.gray[400]};
-
         svg {
+          background-color: ${theme.colors.gray[400]};
+          border-radius: 4px;
           color: ${theme.colors.red};
         }
       }
