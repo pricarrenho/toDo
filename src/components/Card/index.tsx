@@ -2,11 +2,18 @@ import { Button } from "../Button";
 import { CardProps } from "./types";
 import * as S from "./styles";
 
-export const Card = ({ text, deleteButton }: CardProps) => {
+export const Card = ({
+  task,
+  status,
+  deleteButton,
+  handleChange,
+}: CardProps) => {
   return (
     <S.WrapperCard>
-      <p>Teste</p>
-      <S.ContentText>{text}</S.ContentText>
+      <S.Checked active={status} onClick={handleChange} />
+
+      <S.ContentText done={status}>{task}</S.ContentText>
+
       <Button styleType="secondary" icon="trash" deleteButton={deleteButton} />
     </S.WrapperCard>
   );

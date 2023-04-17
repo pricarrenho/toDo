@@ -8,27 +8,41 @@ import { Card } from "../components/Card";
 import * as S from "./styles";
 
 export const Home = () => {
-  const { toDoList, setToDoList } = useGlobalContext();
+  const { toDoList, handleToDoList } = useGlobalContext();
 
   const [inputValue, setInputValue] = useState("");
-
-  const taskList = {
-    task: inputValue,
-    id: Math.random(),
-  };
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    setToDoList([...toDoList, taskList]);
+    const taskList = {
+      task: inputValue,
+      id: Math.random(),
+      status: false,
+    };
+
+    handleToDoList([...toDoList, taskList]);
 
     setInputValue("");
   };
 
-  const handleDelete = (value: number) => {
-    const idCard = value;
+  const handleDelete = (idCard: number) => {
+    handleToDoList(toDoList.filter((value) => value.id !== idCard));
+  };
 
-    setToDoList(toDoList.filter((value) => value.id !== idCard));
+  const handleChange = (idCard: number) => {
+    const newState = toDoList.map((card) => {
+      if (card.id === idCard) {
+        return {
+          ...card,
+          status: !card.status,
+        };
+      }
+
+      return card;
+    });
+
+    handleToDoList(newState);
   };
 
   return (
@@ -51,9 +65,11 @@ export const Home = () => {
           </S.InputContent>
         </S.Form>
 
-        {toDoList.map((item) => (
+        {toDoList?.map((item) => (
           <Card
-            text={item.task}
+            status={item.status}
+            handleChange={() => handleChange(item.id)}
+            task={item.task}
             key={item.id}
             deleteButton={() => handleDelete(item.id)}
           />

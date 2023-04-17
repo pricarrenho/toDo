@@ -6,10 +6,11 @@ export type GlobalProviderProps = {
 
 export type GlobalContextType = {
   toDoList: TaskData[];
-  setToDoList: (value: TaskData[]) => void;
+  handleToDoList: (value: TaskData[]) => void;
 };
 
 export type TaskData = {
   task: string;
   id: number;
+  status: boolean;
 };

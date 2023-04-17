@@ -1,4 +1,6 @@
 export type CardProps = {
-  text: string;
+  task: string;
+  status: boolean;
   deleteButton?: () => void;
+  handleChange?: () => void;
 };
